@@ -25,7 +25,8 @@ public class UserServlet extends BaseServlet {
     private UserService userService = new UserServiceImpl();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
+        String username = new String((req.getParameter("username")).getBytes("ISO-8859-1"),"UTF-8");
+//        String username = req.getParameter("username");
         String password = req.getParameter("password");
         String code = req.getParameter("code");
         String token = (String)req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
@@ -39,11 +40,7 @@ public class UserServlet extends BaseServlet {
                 req.getRequestDispatcher("index.jsp").forward(req,resp);
             }else{
                 req.getSession().setAttribute("user",loginuser);
-                ItemService itemService =new ItemServiceImpl();
-                List<Item> itemList = itemService.queryItems();
-                req.setAttribute("page",itemList);
-                //跳轉到庫存表
-                req.getRequestDispatcher("/pages/inventory.jsp").forward(req,resp);
+                req.getRequestDispatcher("/pages/user/ok.jsp").forward(req,resp);
 
             }
         }else{

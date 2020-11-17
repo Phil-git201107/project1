@@ -39,7 +39,6 @@ public class JDBCUtils {
 		if(conn == null) {	
 			try {
 					conn = source.getConnection();
-					System.out.println("555"+conn);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

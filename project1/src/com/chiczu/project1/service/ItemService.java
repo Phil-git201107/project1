@@ -13,4 +13,9 @@ public interface ItemService {
 
     public List<Item> queryItems();
 
+    public int addItemSale(Item item,Integer quantity);
+
+    public int addItemStock(Item item,Integer count);
+
+    public Item queryItemById(Integer id);
 }

@@ -13,9 +13,25 @@ import java.util.List;
  */
 public class ItemServiceImpl implements ItemService {
 
-    ItemDao itemDao = new ItemDaoImpl();
+    private ItemDao itemDao = new ItemDaoImpl();
+
     @Override
     public List<Item> queryItems() {
         return itemDao.queryItems();
+    }
+
+    @Override
+    public int addItemSale(Item item,Integer quantity) {
+        return itemDao.addItemSale(item,quantity);
+    }
+
+    @Override
+    public int addItemStock(Item item, Integer amount) {
+        return itemDao.addItemStock(item,amount);
+    }
+
+    @Override
+    public Item queryItemById(Integer id) {
+        return itemDao.queryItemById(id);
     }
 }
